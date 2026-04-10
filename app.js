@@ -1,6 +1,10 @@
 import express from "express";
+import employeesRouter from "./routes/employees.js";
+
 const app = express();
 export default app;
+
+app.use(express.json());
 
 import employees from "#db/employees";
 
@@ -32,3 +36,5 @@ app.get("/employees/:id", (req, res) => {
 
   res.send(employee);
 });
+
+app.use("/employees", employeesRouter);
